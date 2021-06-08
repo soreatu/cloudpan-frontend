@@ -180,8 +180,17 @@ export default {
         const rsp = await this.$http.get("/user/download/"+row.id, { withCredentials: true });
 
         if (rsp.status == 200) {
-          // console.log(rsp)
-          var blob = new Blob([rsp.data], {type: "application/octet-stream;charset=utf-8"});
+          console.log(rsp)
+          // decode base64 string, remove space for IE compatibility
+          var binary = atob(rsp.data.replace(/\s/g, ''));
+          var len = binary.length;
+          var buffer = new ArrayBuffer(len);
+          var view = new Uint8Array(buffer);
+          for (var i = 0; i < len; i++) {
+              view[i] = binary.charCodeAt(i);
+          }
+          // create the blob object
+          var blob = new Blob( [view], {type: "application/octet-stream; charset=UTF-8"});
           {
             const a = document.createElement('a');
             const url = window.URL.createObjectURL(blob);

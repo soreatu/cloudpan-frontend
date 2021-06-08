@@ -1,6 +1,6 @@
 # cloudpan-frontend
 
-> A Vue.js project
+私人加密网盘前端部分
 
 ## Build Setup
 
@@ -19,4 +19,3 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
